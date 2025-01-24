@@ -1,86 +1,103 @@
 #include <stdio.h>
-#include <string.h> // Para manipular strings
-#include <ctype.h> // Para usar o toupper
+
+int main(){
+  char estado[3];
+  char codigoCarta[4];
+  char nomeCidade[20];
+  unsigned long int populacao;
+  float area, pib;
+  int numeroPontosTuristicos;
+  float densidadePopulacional; // Calculada como população dividida pela área da cidade
+  float pibPerCapita; // Calculado como PIB total da cidade dividido pela população.
+  float superPoder; // Soma de todas as propriedades, ajustada conforme a lógica do super poder.
+  
+  printf("\n--- Sistema de Cadastro Super Trunfo ---\n"); 
+  
+  printf("\nDigite a letra do estado: ");
+  scanf(" %[^\n]", estado);
+
+  printf("Digite o código da primeira carta (ex: A01): ");
+  scanf(" %3s", codigoCarta);
+  
+  printf("Digite o nome da cidade: ");
+  //fgets(nomeCidade, sizeof(nomeCidade), stdin);
+  scanf(" %[^\n]", nomeCidade);
+
+  printf("Digite a população da cidade: ");
+  scanf(" %ld", &populacao);
+
+  printf("Digite a área da cidade (km²): ");
+  scanf(" %f", &area);
+
+  printf("Digite o PIB da cidade: ");
+  scanf(" %f", &pib);
+
+  printf("Digite o número de pontos turísticos: ");
+  scanf(" %d", &numeroPontosTuristicos);
+  
+  densidadePopulacional = populacao / area;
+  pibPerCapita = pib / populacao;
+
+  printf("\n--- Dados da primeira Carta %s ---\n", codigoCarta);
+  printf("População: %ld\n", populacao);
+  printf("Área: %.2f km²\n", area);
+  printf("PIB: %.2f Bilhões de reais\n", pib);
+  printf("Pontos Turísticos: %d\n", numeroPontosTuristicos);
+  printf("Densidade Populacional: %.2f\n", densidadePopulacional);
+  printf("PIB per Capita: %.2f\n", pibPerCapita);
+  
+  printf("\n--------------------------------------------------------------------------\n");
+  
+  char estado1[3];
+  char codigoCarta1[4];
+  char nomeCidade1[20];
+  unsigned long int populacao1;
+  float area1, pib1;
+  int numeroPontosTuristicos1;
+  float densidadePopulacional1; // Calculada como população dividida pela área da cidade
+  float pibPerCapita1; // Calculado como PIB total da cidade dividido pela população.
+  float superPoder1; // Soma de todas as propriedades, ajustada conforme a lógica do super poder.
+  
+  printf("\n--- Sistema de Cadastro Super Trunfo ---\n"); 
+  
+  printf("\nDigite a letra do estado: ");
+  scanf(" %[^\n]", estado1);
+
+  printf("Digite o código da primeira carta (ex: A01): ");
+  scanf(" %3s", codigoCarta1);
+  
+  printf("Digite o nome da cidade: ");
+  //fgets(nomeCidade1, sizeof(nomeCidade1), stdin);
+  scanf(" %[^\n]", nomeCidade1);
+
+  printf("Digite a população da cidade: ");
+  scanf(" %ld", &populacao1);
+
+  printf("Digite a área da cidade (km²): ");
+  scanf(" %f", &area1);
+
+  printf("Digite o PIB da cidade: ");
+  scanf(" %f", &pib1);
+
+  printf("Digite o número de pontos turísticos: ");
+  scanf(" %d", &numeroPontosTuristicos1);
+  
+  densidadePopulacional1 = populacao1 / area1;
+  pibPerCapita1 = pib1 / populacao1;
+
+  printf("\n--- Dados da segunda Carta %s ---\n", codigoCarta1);
+  printf("População: %ld\n", populacao1);
+  printf("Área: %.2f km²\n", area1);
+  printf("PIB: %.2f Bilhões de reais\n", pib1);
+  printf("Pontos Turísticos: %d\n", numeroPontosTuristicos1);
+  printf("Densidade Populacional: %.2f\n", densidadePopulacional1);
+  printf("PIB per Capita: %.2f\n", pibPerCapita1);
+  
+  printf("\n--------------------------------------------------------------------------\n");
+  printf("\n----------------------A CARTA GANHADORA-----------------------------------\n");
+  printf("Se o resultado for '1' o ganhador é a carta do código A02\nSe o resultado for '0' o ganhador é a carta do código A01\nRESULTADO: %d\n", densidadePopulacional > densidadePopulacional1);
 
 
-int main() {
-    char pais[20];
-    char estado[3];
-    char cidade[3];
-    int i = 0;
-    int pontosturisticos, populacao, area;
-    float pib, pibpercapito, densidade;
-
-    printf("Digite o nome do País: ");
-    // Entrada do país (permitindo espaços)
-    fgets(pais, sizeof(pais), stdin);
-    pais[strcspn(pais, "\n")] = '\0'; // Remove o \n da entrada
-
-    // Faz com que saia tudo em maíusculo
-    while (pais[i] != '\0') {
-      pais[i] = toupper(pais[i]);
-      i++;
-      }
-
-    i = 0; // Zera a variavel i
-
-    printf("Digite o estado: ");
-    // %2s limita a leitura a, no maximo, 2 caracteres (excluindo o caracter nulo \0).
-    // Isso é útil para evitar que o programa leia mais caracteres do que o buffer pode armazenar
-    scanf("%2s", estado);
-
-    while (estado[i] != '\0') {
-      estado[i] = toupper(estado[i]);
-      i++;
-      }
-
-    i = 0;
-
-    printf("Digite a cidade: ");
-    scanf("%2s", cidade);
-
-    while (cidade[i] != '\0') {
-      cidade[i] = toupper(cidade[i]);
-      i++;
-      }
-
-    printf("Digite a população: ");
-    scanf("%d", &populacao);
-
-    printf("Digite a area: ");
-    scanf("%d", &area);
-
-    printf("Digite o PIB: ");
-    scanf("%f", &pib);
-
-    printf("Digite os pontos turisticos: ");
-    scanf("%d", &pontosturisticos);
-
-    // Densidade populacional
-    
-    densidade = (float) populacao / area;
-
-    // PIB per capito
-    
-    pibpercapito = pib / populacao;
-
-    // O .2f "ponto + numero inteiro", permite definir quantos números seram exibidos no final
-    printf("\n **** Dados da carta: \n");
-    printf("\n");
-    // A / "barra" no final, permite que continue na linha a baixo
-    printf("    - Nome do País: %s\n\
-    - Letra do Estado: %s\n\
-    - Número da Cidade: %s\n\
-    - População: %d\n\
-    - Área: %d km²\n\
-    - PIB: %.2f\n\
-    - Pontos turisticos: %d\n\
-    - PIB per Capita: %.2f\n\
-    - Densidade Populacional: %.2f\n"\
-    , pais, estado, cidade, populacao, area, pib, pontosturisticos, pibpercapito, densidade);
-    strcat(estado, cidade); // Concatena uma string no final da outra
-    printf("    - Código da carta: %s\n", estado);
-
-
-    return 0;
+  
+  return 0;
 }
